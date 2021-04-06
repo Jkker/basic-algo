@@ -1,0 +1,9 @@
+function  StackEval(;;  L); {  Please  note  that  StackEval  modifies  stack  L.  }
+    input:  L  is  a  stack  that  represents  an  arithmetic  expression  as  described:
+    output:  Returns  the  evaluation  of  L:
+    x  <-  PopFrom(L);
+    if  x  is  a  number  then  return(x)
+    else
+        return(eval(x, StackEval(L), StackEval(L)))
+    endif
+end_StackEval;

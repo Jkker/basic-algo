@@ -1,0 +1,63 @@
+// Iterative
+procedure Selection_sort(n;;Data[1...n])
+    for IndexTop <- n downto 2 do:
+        IndexofBiggest <- 1
+        Biggest <- Data[1]
+        for TestDex <- 2 to IndexTop do
+            if Biggest < Data[TestDex] then
+                Biggest <- Data[TestDex]
+                IndexofBiggest <- TestDex
+            endif
+        endfor
+        Swap(Data[IndexofBiggest], Data[IndexTop])
+    endfor
+end_Selection_sort
+
+
+// Recursive
+
+procedure Selection_sort(n;;Data[1...n])
+    if n = 1 then
+        return
+    endif
+    IndexofBiggest <- 1
+    Biggest <- Data[1]
+    for TestDex <- 2 to n do
+        if Biggest < Data[TestDex] then
+            Biggest <- Data[TestDex]
+            IndexofBiggest <- TestDex
+        endif
+    endfor
+    Swap(Data[IndexofBiggest], Data[n])
+    Selection_sort(n-1;;Data[1...n-1])
+end_Selection_sort
+
+
+// Recursive Forgetful
+
+procedure Selection_sort_forgetful(n;;Data[1...n])
+    if n = 1 then
+        print(Data)
+        return
+    endif
+    IndexofBiggest <- 1
+    Biggest <- Data[1]
+    for TestDex <- 2 to n do
+        if Biggest < Data[TestDex] then
+            Biggest <- Data[TestDex]
+            IndexofBiggest <- TestDex
+        endif
+    endfor
+    Swap(Data[IndexofBiggest], Data[n])
+    Selection_sort_forgetful(n-1;;Data[1...n-1])
+    Swap(Data[n], Data[IndexofBiggest])
+end_election_sort_forgetful
+
+
+
+
+
+
+
+
+

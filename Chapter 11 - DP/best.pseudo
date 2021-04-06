@@ -1,0 +1,16 @@
+global n, A[1...n], Decisions[1...n, 1...n]
+global Lookup[1...n, 1...n] with entries initalized to -∞
+function Best(i, j;;);
+	if j < i then return(0) endif;
+	temp <- Lookup[i, j];
+	for k <- i to j do
+		temp2 <- 2Best(i, k − 1) + A[k] + 2Best(k + 1, j);
+		if temp < temp2 then
+			temp <- temp2
+			bestk <- k
+		endif
+	endfor;
+	Decisions[i,j]<-bestk
+	Lookup[i,j]<-temp
+	return(temp)
+end_Best

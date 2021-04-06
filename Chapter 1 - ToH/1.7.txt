@@ -1,0 +1,87 @@
+if Y != Nil
+    head <- Y
+    Y <- Y.next
+    head.next <- M
+    M <- head
+
+if Y != Nil
+    head <- Y
+    Y <- Y.next
+    head.next <- M
+    M <- head
+
+def reverse(Y):
+    # Initialize pointers
+    curr <- Y
+    prev <- Nil
+    next <- Nil
+    while(curr != Nil):
+        # Store next
+        next <- curr.next
+
+        # Reverse next and prev
+        curr.next <- prev;
+
+        # Advance the pointers
+        prev <- curr;
+        curr <- next;
+
+    Y <- prev
+
+
+def sum_succeed(Y):
+    curr <- Y
+    while(curr.next != Nil):
+        sum <- curr.next.dat
+        while(sum.next != Nil):
+            sum += sum.next.dat
+        curr += sum
+    # Not entirely sure what the question asks for
+    reverse(Y)
+
+
+def recur_sum_preceded(head, prev, curr):
+    if curr == Nil:
+        return head
+    curr.dat <- curr.dat + prev.dat
+    recur_sum_preceded(head, curr, curr.next)
+
+
+def recur_sum_succeed(head, curr):
+    if curr == Nil:
+        return head
+    sum = 0
+    while(sum.next != Nil):
+            sum += sum.next.dat
+        curr += sum
+    curr.dat <- curr.dat + sum
+    recur_sum_succeed(head, curr.next)
+
+
+def traverse_cycle_list(L):
+    if L == Nil:
+        return
+    fast_pointer <- L
+    slow_pointer <- L
+    while(fast_pointer && slow_pointer)
+        if fast_pointer == slow_pointer:
+            print('Intersection found'）
+            return
+        slow_pointer <- slow_pointer.next
+        fast_pointer <- fast_pointer.next.next
+
+
+def find_cycle_size(L):
+    if L == Nil:
+        return
+    fast_pointer <- L
+    slow_pointer <- L
+    cycle_size = 0
+    while(fast_pointer && slow_pointer)
+        if fast_pointer == slow_pointer:
+            print('Intersection found'）
+            return
+        slow_pointer <- slow_pointer.next
+        fast_pointer <- fast_pointer.next.next
+        cycle_size += 1
+    return cycle_size
